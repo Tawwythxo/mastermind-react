@@ -3,8 +3,9 @@
     "",
     "\\public",
     "\\src",
-    "\\src\\Pin",
-    "\\src\\__snapshots__"
+    "\\src\\model",
+    "\\src\\Pin"
   ],
+  "SelectedNode": "\\src\\model\\model.spec.js",
   "PreviewInSolutionExplorer": false
 }

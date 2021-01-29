@@ -8,17 +8,17 @@ exports[`renders learn react link 1`] = `
     Master
   </button>
   <button
-    class="Pin Pin--blue"
+    class="Pin Pin--red"
   >
     Master
   </button>
   <button
-    class="Pin Pin--yellow"
+    class="Pin Pin--red"
   >
     Master
   </button>
   <button
-    class="Pin Pin--green"
+    class="Pin Pin--red"
   >
     Master
   </button>
