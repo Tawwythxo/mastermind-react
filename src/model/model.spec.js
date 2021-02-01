@@ -76,7 +76,6 @@ describe('Model', () => {
                 { startingColor: { assumedColors: [BROWN, RED, RED, RED] }, resultModel: { assumedColors: [RED, RED, RED, RED] } },
 
             ].forEach(({ startingColor, resultModel }) => {
-                //RED TO GREEN
                 it('should change from color1 to color2', () => {
                     const { changeColor } = init(startingColor)
                     changeColor(0)
