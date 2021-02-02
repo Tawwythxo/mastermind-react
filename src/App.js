@@ -22,10 +22,15 @@ function App() {
             {model.rounds.map((round) => {
 
                 return (<div>
+              
                     <Pin color={round.assumedColors[0]} change={() => { }}></Pin>
                     <Pin color={round.assumedColors[1]} change={() => { }}></Pin>
                     <Pin color={round.assumedColors[2]} change={() => { }}></Pin>
                     <Pin color={round.assumedColors[3]} change={() => { }}></Pin>
+
+
+                    <div className="hints">
+                    </div>
                 </div>)
             })}
          

@@ -8,6 +8,7 @@ const { RED, BLUE, YELLOW, GREEN, PURPLE, ORANGE, PINK, BROWN } = colors;
 
 
 export function initialModel(logic = defaultLogic) {
+
     const randomCode = logic.generateCode(Math.random); 
 
     return {
@@ -21,6 +22,7 @@ export function createModel(model, setModel, logic = defaultLogic) {
     return {
       
         getAssumedColor: (index) => model.assumedColors[index],
+
         changeColor: (index) => {
           
             const newModel = cloneDeep(model)
@@ -32,6 +34,7 @@ export function createModel(model, setModel, logic = defaultLogic) {
             newModel.assumedColors[index] = colorList[newColorIndex];
             setModel(newModel);
         },
+
         check: () => {
             const newModel = cloneDeep(model)
             newModel.rounds.push({
