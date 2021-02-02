@@ -1,5 +1,7 @@
+import { generateCode } from 'testmastermind/src/mastermind'
 import { initialModel, createModel } from "./model"
 import { RED, GREEN, YELLOW, BLUE, PURPLE, ORANGE, PINK, BROWN } from "testmastermind/src/colors"
+import { FITS, PARTIALLY, WRONG } from "testmastermind/src/hints"
 
 
 describe('Model', () => {
@@ -9,15 +11,33 @@ describe('Model', () => {
         it('should have assumedColors', () => {
             expect(initialModel()).toEqual(expect.objectContaining({assumedColors: [RED, RED, RED, RED]}))
         })
+
+        it('should have rounds', () => {
+            expect(initialModel()).toEqual(expect.objectContaining({ rounds: [] }))
+        })
+        
+        it('should have code', () => {
+            expect(initialModel()).not.toBe(expect.objectContaining({ code: [RED, RED, RED, RED] }))
+        })
+
+        it('should have code with 4 random colors', () => {
+            const logic = { generateCode: jest.fn(() => [RED, GREEN, BLUE, YELLOW]) };
+            
+            expect(initialModel(logic)).not.toBe(expect.objectContaining({ code: [RED, GREEN, BLUE, YELLOW] }))
+        })
+
+    
         
     })
 
     describe('createModel', () => {
         
-        let spy
-        function init(model) {
-            spy = jest.fn()
-            return createModel(model, spy)
+        let setModelSpy, logicSpy;
+        function init(model, result) {
+            setModelSpy = jest.fn()
+            logicSpy = jest.createMockFromModule('testmastermind/src/mastermind');
+            logicSpy.checkCode.mockReturnValueOnce(result);
+            return createModel(model, setModelSpy, logicSpy)
         }
 
         describe('get assumedColors', () => {
@@ -59,7 +79,7 @@ describe('Model', () => {
                 it('should change color of index' +  index, () => {
                     const { changeColor } = init(defaultModel)
                     changeColor(index)
-                    expect(spy).toHaveBeenCalledWith(resultModel)
+                    expect(setModelSpy).toHaveBeenCalledWith(resultModel)
                 })
             });
 
@@ -76,17 +96,78 @@ describe('Model', () => {
                 { startingColor: { assumedColors: [BROWN, RED, RED, RED] }, resultModel: { assumedColors: [RED, RED, RED, RED] } },
 
             ].forEach(({ startingColor, resultModel }) => {
-                //RED TO GREEN
                 it('should change from color1 to color2', () => {
                     const { changeColor } = init(startingColor)
                     changeColor(0)
-                    expect(spy).toHaveBeenCalledWith(expect.objectContaining(resultModel))
+                    expect(setModelSpy).toHaveBeenCalledWith(expect.objectContaining(resultModel))
                 })
             })
 
             
         })
 
+        describe('check', () => {
+
+            const expectedResult = [FITS, FITS, WRONG, PARTIALLY];
+
+
+            beforeEach(() => {
+                const { check } = init(initialModel(), expectedResult )
+                check()
+
+            })
+            it('should call setModel', () => {
+
+                expect(setModelSpy).toHaveBeenCalled()
+            })
+
+
+
+            describe('round', () => {
+                
+                it('should contain a round number', () => {
+
+                    expect(setModelSpy.mock.calls[0][0].rounds[0]).toEqual(expect.objectContaining({ round: 1 }))
+                })
+
+                it('should contain a copy of assumed colors', () => {
+
+                    expect(setModelSpy.mock.calls[0][0].rounds[0]).toEqual(expect.objectContaining({ assumedColors: [RED, RED, RED, RED] }))
+                })
+
+                it('should contain result', () => {
+
+                    expect(setModelSpy.mock.calls[0][0].rounds[0]).toEqual(expect.objectContaining({ result: expectedResult }))
+                })
+
+                it('should call checkCode with code and guess', () => {
+                    const { check } = init({
+                        assumedColors: [RED, RED, RED, RED],
+                        rounds: [],
+                        code: [RED, GREEN, BLUE, YELLOW],
+                        result: [WRONG, WRONG, WRONG, WRONG]
+
+                    })
+                    check()
+                    expect(logicSpy.checkCode).toHaveBeenCalledWith([RED, GREEN, BLUE, YELLOW], [RED, RED, RED, RED] )
+                })
+
+                it('should call checkCode with code and guess', () => {
+                    const { check } = init({
+                        assumedColors: [RED, RED, RED, RED],
+                        rounds: [{ round: 1, assumedColors: [RED, RED, RED, RED], result: [WRONG, WRONG, WRONG, WRONG] }],
+                        code: [RED, GREEN, BLUE, YELLOW],
+                        result: [WRONG, WRONG, WRONG, WRONG]
+
+                    })
+                    check()
+                    expect(setModelSpy.mock.calls[0][0].rounds.length).toEqual(2)
+                })
+
+            })
+
+
+        })
 
 
 
