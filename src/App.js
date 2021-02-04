@@ -21,8 +21,8 @@ function App() {
             
             {model.rounds.map((round) => {
 
-                return (<div>
-              
+                return (<div className="row">
+                    <button className="rounds"> round</button>
                     <Pin color={round.assumedColors[0]} change={() => { }}></Pin>
                     <Pin color={round.assumedColors[1]} change={() => { }}></Pin>
                     <Pin color={round.assumedColors[2]} change={() => { }}></Pin>

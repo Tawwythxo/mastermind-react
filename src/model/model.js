@@ -48,7 +48,7 @@ export function createModel(model, setModel, logic = defaultLogic) {
             })
 
             //console.log(newModel.round + " ! " + newModel.assumedColors + " ? " + newModel.result)
-
+            
             //object object newModel in function setModel
             setModel(newModel)
           

@@ -83,9 +83,11 @@
 }
 
 .checkButton {
-    font-size: 2em;
-    padding: 10px;
-    margin-right: 20px;
+    font-size: 1.2em;
+    padding: 5px;
+    margin-left: 20px;
+    height:50px;
+    
 }
 
 .row {
@@ -95,8 +97,8 @@
 
 .Hint {
     display: inline-block;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     border: 1px;
     margin-right: 15px;
     margin-bottom: 15px;
@@ -114,3 +116,17 @@
     background-color: darkred;
 }
 
+.rounds {
+    
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 1px;
+   margin-right: 15px;
+    margin-bottom:15px;
+    border-radius: 10px;
+}
+.row {
+    display: flex;
+    margin-bottom: 15px;
+}
