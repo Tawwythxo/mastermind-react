@@ -1,14 +1,14 @@
 import { initialModel, createModel } from './model/model';
-import logo from './logo.svg';
 import './App.css';
 import Pin from './Pin/Pin'
-import { RED, GREEN, YELLOW, BLUE, PURPLE, ORANGE, PINK, BROWN } from "testmastermind/src/colors"
+import Hint from './Hint/Hint'
+//import Round from './Round/Round'
 import { useState } from 'react';
 
 
 function App() {
     const [model, setModel] = useState(initialModel())
-    const {getAssumedColor, changeColor, check} = createModel(model, setModel)
+    const { getAssumedColor, changeColor, check, getRounds } = createModel(model, setModel)
     return (
         <div>
             <div className="row">
@@ -27,15 +27,17 @@ function App() {
                     <Pin color={round.assumedColors[1]} change={() => { }}></Pin>
                     <Pin color={round.assumedColors[2]} change={() => { }}></Pin>
                     <Pin color={round.assumedColors[3]} change={() => { }}></Pin>
-
-
-                    <div className="hints">
-                    </div>
+                    <Hint color={round.result[0]} change={() => { }}></Hint>
+                    <Hint color={round.result[1]} change={() => { }}></Hint>
+                    <Hint color={round.result[2]} change={() => { }}></Hint>
+                    <Hint color={round.result[3]} change={() => { }}></Hint>
+                   
                 </div>)
             })}
          
         </div>
     );
  }
-    
+
+
     export default App;

@@ -3,9 +3,9 @@ import { cloneDeep } from 'lodash';
 import * as defaultLogic from 'testmastermind/src/mastermind'
 import { FITS, PARTIALLY, WRONG } from "testmastermind/src/hints";
 import * as colors from 'testmastermind/src/colors';
-const { RED, BLUE, YELLOW, GREEN, PURPLE, ORANGE, PINK, BROWN } = colors;
+const { RED } = colors;
 
-
+var roundsnr = 0;
 
 export function initialModel(logic = defaultLogic) {
 
@@ -33,17 +33,30 @@ export function createModel(model, setModel, logic = defaultLogic) {
 
             newModel.assumedColors[index] = colorList[newColorIndex];
             setModel(newModel);
+           
         },
 
+        //click check button to clone the colors which were added before
         check: () => {
+            //Object object
             const newModel = cloneDeep(model)
+         
             newModel.rounds.push({
-                round: 1,
+                round:  1,
                 assumedColors: model.assumedColors,
                 result: logic.checkCode(newModel.code, newModel.assumedColors)
             })
 
+            //console.log(newModel.round + " ! " + newModel.assumedColors + " ? " + newModel.result)
+
+            //object object newModel in function setModel
             setModel(newModel)
+          
+        },
+
+        getRounds: () => {
         }
+
+
     }
 }

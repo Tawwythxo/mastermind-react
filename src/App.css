@@ -83,11 +83,34 @@
 }
 
 .checkButton {
-    font-size: 2.2em;
-    padding: 15px;
+    font-size: 2em;
+    padding: 10px;
     margin-right: 20px;
 }
 
 .row {
     display:block 
 }
+
+
+.Hint {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 1px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+}
+
+
+.Hint--partially {
+    background-color: yellow;
+}
+.Hint--fits {
+    background-color: darkgreen;
+}
+.Hint--wrong {
+    background-color: darkred;
+}
+
