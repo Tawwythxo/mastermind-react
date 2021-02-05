@@ -14,7 +14,7 @@ describe('Pin', () => {
             expect(container.querySelector(".Pin--blue")).not.toBeNull()
         })
 
-       /* it('should be yellow when property color is yellow', () => {
+        it('should be yellow when property color is yellow', () => {
             const { container } = render(<Pin color={YELLOW} />)
             expect(container.querySelector(".Pin--yellow")).not.toBeNull()
         })
@@ -23,7 +23,7 @@ describe('Pin', () => {
             const { container } = render(<Pin color={GREEN} />)
             expect(container.querySelector(".Pin--green")).not.toBeNull()
         })
-
+        
         it('should be purple when property color is purple', () => {
             const { container } = render(<Pin color={PURPLE} />)
             expect(container.querySelector(".Pin--purple")).not.toBeNull()
@@ -43,7 +43,7 @@ describe('Pin', () => {
             const { container } = render(<Pin color={BROWN} />)
             expect(container.querySelector(".Pin--brown")).not.toBeNull()
         })
-        */
+        
         it('should warn when property color is black', () => {
             jest.spyOn(console, "error").mockImplementation(() => { })
             const { container } = render(<Pin color={"BLACK"} />)
