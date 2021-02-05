@@ -4,23 +4,15 @@ exports[`renders learn react link 1`] = `
 <div>
   <button
     class="Pin Pin--red"
-  >
-    Master
-  </button>
+  />
   <button
     class="Pin Pin--red"
-  >
-    Master
-  </button>
+  />
   <button
     class="Pin Pin--red"
-  >
-    Master
-  </button>
+  />
   <button
     class="Pin Pin--red"
-  >
-    Master
-  </button>
+  />
 </div>
 `;
