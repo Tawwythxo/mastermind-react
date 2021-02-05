@@ -1,8 +1,6 @@
 import { initialModel, createModel } from './model/model';
-import logo from './logo.svg';
 import './App.css';
 import Pin from './Pin/Pin'
-import { RED, GREEN, YELLOW, BLUE, PURPLE, ORANGE, PINK, BROWN } from "testmastermind/src/colors"
 import { useState } from 'react';
 
 
