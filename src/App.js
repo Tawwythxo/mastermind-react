@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Pin from './Pin/Pin'
-import { RED, BLUE, YELLOW, GREEN, PURPLE, ORANGE, PINK, BROWN} from "testmastermind/src/colors"
+import { RED, BLUE, YELLOW, GREEN} from "testmastermind/src/colors"
 
 
 function App() {
