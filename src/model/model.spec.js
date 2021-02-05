@@ -180,7 +180,27 @@ describe('Model', () => {
 
         describe('newGame', () => {
 
+            it('should have assumedColors', () => {
+                expect(initialModel()).toEqual(expect.objectContaining({ assumedColors: [RED, RED, RED, RED] }))
+            })
 
+            it('should have rounds', () => {
+                expect(initialModel()).toEqual(expect.objectContaining({ rounds: [] }))
+            })
+
+            it('should have code', () => {
+                expect(initialModel()).not.toBe(expect.objectContaining({ code: [RED, RED, RED, RED] }))
+            })
+
+            it('should have gameState', () => {
+                expect(initialModel()).not.toBe(expect.objectContaining({ gamestate: [PENDING] }))
+            })
+
+            it('should have code with 4 random colors', () => {
+                const logic = { generateCode: jest.fn(() => [RED, GREEN, BLUE, YELLOW]) };
+
+                expect(initialModel(logic)).not.toBe(expect.objectContaining({ code: [RED, GREEN, BLUE, YELLOW] }))
+            })
         })
       
 
