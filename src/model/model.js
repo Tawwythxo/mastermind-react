@@ -54,13 +54,27 @@ export function createModel(model, setModel, logic = defaultLogic) {
                       
         },
 
-        getRounds: () => {
-
-         
-        }
        
+
+        newGame: () => {
+            roundCount = 0;
+            const randomCode = logic.generateCode(Math.random); 
+            var newGame = {
+                assumedColors: [RED, RED, RED, RED],
+                rounds: [],
+                code: randomCode,
+                gamestate: [PENDING]
+            }
+            
+            setModel(newGame);
+
+
+        }
+
        
     }
 
 }
+
+
 

@@ -22,6 +22,11 @@ exports[`renders learn react link 1`] = `
     >
        Check 
     </button>
+    <button
+      class="resetButton"
+    >
+       Start new game 
+    </button>
   </div>
 </div>
 `;

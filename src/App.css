@@ -89,6 +89,13 @@
     
 }
 
+.resetButton {
+    font-size: 1.2em;
+    padding: 5px;
+    margin-left: 20px;
+    height: 50px;
+}
+
 .row {
     display:block 
 }

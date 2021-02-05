@@ -177,6 +177,11 @@ describe('Model', () => {
         })
 
 
+
+        describe('newGame', () => {
+
+
+        })
       
 
 

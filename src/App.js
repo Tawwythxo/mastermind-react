@@ -8,16 +8,18 @@ import { useState } from 'react';
 
 function App() {
     const [model, setModel] = useState(initialModel())
-    const { getAssumedColor, changeColor, check, getRounds } = createModel(model, setModel)
+    const { getAssumedColor, changeColor, check, getRounds, newGame } = createModel(model, setModel)
  
     return (
         <div>
+
             <div className="row">
                 <Pin color={getAssumedColor(0)} change={() => changeColor(0)}></Pin>
                 <Pin color={getAssumedColor(1)} change={() => changeColor(1)}></Pin>
                 <Pin color={getAssumedColor(2)} change={() => changeColor(2)}></Pin>
                 <Pin color={getAssumedColor(3)} change={() => changeColor(3)}></Pin>
                 <button className="checkButton" onClick={check}> Check </button>
+                <button className="resetButton" onClick={newGame}> Start new game </button>
             </div>
             
             {model.rounds.map((round) => {
@@ -25,7 +27,8 @@ function App() {
                 return (<div className="row">
                    
                     <div id="RoundButton" className="rounds">{round.round}</div>
-                   
+                    
+
                     <Pin color={round.assumedColors[0]} change={() => { }}></Pin>
                     <Pin color={round.assumedColors[1]} change={() => { }}></Pin>
                     <Pin color={round.assumedColors[2]} change={() => { }}></Pin>
@@ -36,6 +39,8 @@ function App() {
                     <Hint color={round.result[3]} change={() => { }}></Hint>
                    
                 </div>)
+
+               
             })}
          
         </div>
