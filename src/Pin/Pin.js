@@ -4,7 +4,7 @@ import * as colors from "testmastermind/src/colors"
 export default function Pin({ color, change }) {
     const col = color.toLowerCase();
     const classes = ["Pin"].concat(["Pin--" + col])
-    return (<button className={classes.join(" ")} onClick={change}>Master</button>)
+    return (<button className={classes.join(" ")} onClick={change}></button>)
 }
 
 Pin.propTypes = {
