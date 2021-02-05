@@ -9,6 +9,7 @@ import { useState } from 'react';
 function App() {
     const [model, setModel] = useState(initialModel())
     const { getAssumedColor, changeColor, check, getRounds } = createModel(model, setModel)
+ 
     return (
         <div>
             <div className="row">
@@ -22,7 +23,9 @@ function App() {
             {model.rounds.map((round) => {
 
                 return (<div className="row">
-                    <button className="rounds"> round</button>
+                   
+                    <div id="RoundButton" className="rounds">{round.round}</div>
+                   
                     <Pin color={round.assumedColors[0]} change={() => { }}></Pin>
                     <Pin color={round.assumedColors[1]} change={() => { }}></Pin>
                     <Pin color={round.assumedColors[2]} change={() => { }}></Pin>
@@ -38,6 +41,5 @@ function App() {
         </div>
     );
  }
-
 
     export default App;

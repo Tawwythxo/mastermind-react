@@ -127,8 +127,9 @@ describe('Model', () => {
                 
                 it('should contain a round number', () => {
 
-                    expect(setModelSpy.mock.calls[0][0].rounds[0]).toEqual(expect.objectContaining({ round: 1 }))
+                    expect(setModelSpy.mock.calls[0][0].rounds[0]).toEqual(expect.objectContaining({ round: 2 }))
                 })
+               
 
                 it('should contain a copy of assumed colors', () => {
 
@@ -169,6 +170,8 @@ describe('Model', () => {
 
         })
 
+
+      
 
 
 
