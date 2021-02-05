@@ -1,6 +1,8 @@
 import { generateCode } from 'testmastermind/src/mastermind'
 import { initialModel, createModel } from "./model"
 import { RED, GREEN, YELLOW, BLUE, PURPLE, ORANGE, PINK, BROWN } from "testmastermind/src/colors"
+import { LOST, WON, PENDING } from "testmastermind/src/gameProgress";
+
 import { FITS, PARTIALLY, WRONG } from "testmastermind/src/hints"
 
 
@@ -18,6 +20,10 @@ describe('Model', () => {
         
         it('should have code', () => {
             expect(initialModel()).not.toBe(expect.objectContaining({ code: [RED, RED, RED, RED] }))
+        })
+
+        it('should have gameState', () => {
+            expect(initialModel()).not.toBe(expect.objectContaining({ gamestate: [PENDING] }))
         })
 
         it('should have code with 4 random colors', () => {

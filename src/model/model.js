@@ -1,7 +1,7 @@
 
 import { cloneDeep } from 'lodash';
 import * as defaultLogic from 'testmastermind/src/mastermind'
-import { FITS, PARTIALLY, WRONG } from "testmastermind/src/hints";
+import { LOST, WON, PENDING } from "testmastermind/src/gameProgress";
 import * as colors from 'testmastermind/src/colors';
 const { RED } = colors;
 
@@ -15,6 +15,7 @@ export function initialModel(logic = defaultLogic) {
         assumedColors: [RED, RED, RED, RED],
         rounds: [],
         code: randomCode,
+        gamestate: [PENDING]
     }
 }
 
